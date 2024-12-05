@@ -4,6 +4,8 @@ import { MdMenu } from "react-icons/md"
 import { PiShoppingCartThin } from "react-icons/pi"
 import { NavbarMenu } from "../../MockData/Data"
 import { useState } from "react"
+import ResposiveMenu from "./ResposiveMenu"
+import { motion } from "framer-motion"
 
 const Navbar = () => {
 
@@ -12,7 +14,12 @@ const Navbar = () => {
   return (
     <>
       <nav>
-          <div  className="container flex justify-between items-center py-8">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }} 
+            className="container flex justify-between items-center py-8"
+          >
             {/* Logo section */}
             <div className="text-2xl flex items-center gap-2 font-bold uppercase">
               <FaDumbbell />
@@ -52,9 +59,10 @@ const Navbar = () => {
             <div className="md:hidden" onClick={() => setOpen(!open)}>
               <MdMenu className="text-4xl" />
             </div>
-          </div>
+          </motion.div>
       </nav>
       {/* Mobile Sidebar section */}
+      <ResposiveMenu open={open} />
     </>
   )
 }
